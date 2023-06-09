@@ -1,7 +1,6 @@
 // options3.cairo
 // Execute `starklings hint options3` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
 
 use option::OptionTrait;
 use debug::PrintTrait;
@@ -41,7 +40,10 @@ fn display_grades(student: @Student, index: usize) {
     // TODO: Modify the following lines so that if there is a grade for the course, it is printed.
     //       Otherwise, print "No grade".
     // 
-    course.unwrap().print();
+    match course {
+        Option::Some(cur) => cur.print(),
+        Option::None(_) => ('No grade').print()
+    }
     display_grades(student, index + 1);
 }
 
